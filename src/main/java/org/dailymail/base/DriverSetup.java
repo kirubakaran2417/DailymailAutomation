@@ -31,4 +31,8 @@ public class DriverSetup {
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(120));
         return driver;
     }
+
+    public static WebDriver getFirefoxDriver() {
+        return null;
+    }
 }
