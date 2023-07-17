@@ -1,6 +1,11 @@
 package org.dailymail.base;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import io.appium.java_client.android.AndroidDriver;
 import org.apache.commons.io.FileUtils;
+
+import org.dailymail.utils.DateUtils;
 import org.dailymail.utils.FileIO;
 import org.openqa.selenium.*;
 
@@ -15,14 +20,17 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 public class BaseUI {
 
-    public static WebDriver driver;
+    public static AndroidDriver driver;
     public static Properties prop;
+    public static ExtentReports report;
+    public static ExtentTest logger;
+    public static String timestamp = DateUtils.getTimeStamp();
     public static String browser_choice;
     public BaseUI() {
         prop = FileIO.initProperties();
     }
     /************** Invoke Browser ****************/
-    public static WebDriver invokeBrowser() {
+    public static AndroidDriver invokeBrowser() {
 
         browser_choice = prop.getProperty("browserName");
         try {
